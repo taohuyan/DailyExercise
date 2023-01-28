@@ -29,10 +29,10 @@ int main()
     return 0;
 }   
 
-/*����Ԫ��Ϊe��ջ��Ԫ��*/
+/*插入元素为e的栈顶元素*/
 void Push(SqDoubleSqStack **S,SElemtype e,SElemtype Num_SqDStack)
 {
-    if((*S)->top1+1==(*S)->top2){   //ջ������������Push��Ԫ��
+    if((*S)->top1+1==(*S)->top2){   //栈已满，不能再Push新元素
         cout<<"ERROR"<<endl;
         return;
     }
@@ -46,7 +46,7 @@ void Push(SqDoubleSqStack **S,SElemtype e,SElemtype Num_SqDStack)
     cout<<"Push--"<<e<<"--OK"<<endl;
 }
 
-//��ջ���գ���ɾ��S��ջ��Ԫ�أ�����eֵ���ء�
+//若栈不空，则删除S的栈顶元素，并用e值返回。
 void Pop(SqDoubleSqStack **S,SElemtype *e,SElemtype Num_SqDStack)
 {
     if(Num_SqDStack==1){

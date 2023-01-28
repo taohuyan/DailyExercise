@@ -13,8 +13,8 @@ typedef int SElemType;
 typedef struct SqStack
 {
     SElemType data[MAXSIZE];
-    int top;    //ÓÃÓÚÕ»¶¥Ö¸Õë
-    /*³õÊ¼»¯Ë³ĞòÕ»*/
+    int top;    //ç”¨äºæ ˆé¡¶æŒ‡é’ˆ
+    /*åˆå§‹åŒ–é¡ºåºæ ˆ*/
     SqStack(int x):
         top(x){
 
@@ -30,23 +30,23 @@ int main()
 {
     SqStack *S=new SqStack(-1);
     int n,ans1,ans2;
-    cout<<"ÊäÈëÈëÕ»ÔªËØ¸öÊı"<<endl;
+    cout<<"è¾“å…¥å…¥æ ˆå…ƒç´ ä¸ªæ•°"<<endl;
     cin>>n;
     for(int i=1;i<=n;i++){
-        cout<<"µÚ"<<i<<"¸öÈëÕ»ÔªËØ"<<endl;
+        cout<<"ç¬¬"<<i<<"ä¸ªå…¥æ ˆå…ƒç´ "<<endl;
         cin>>ans1;
         Push(&S,ans1);
     }
-    cout<<"Ë³ĞòÕ»µÄ³¤¶ÈÎª£º"<<endl;
+    cout<<"é¡ºåºæ ˆçš„é•¿åº¦ä¸ºï¼š"<<endl;
     cout<<Get_Length(&S)<<endl;
-    cout<<"Êä³öË³ĞòÕ»£º"<<endl;
+    cout<<"è¾“å‡ºé¡ºåºæ ˆï¼š"<<endl;
     PrintSqStack(&S);
     for(int i=0;i<n;i++){
         Pop(&S,&ans2);
     }
 }
 
-//»ñµÃË³ĞòÕ»SµÄ³¤¶È
+//è·å¾—é¡ºåºæ ˆSçš„é•¿åº¦
 int Get_Length(SqStack **S)
 {
     if((*S)->top==-1||(*S)->top>=MAXSIZE-1){
@@ -56,7 +56,7 @@ int Get_Length(SqStack **S)
     return (*S)->top+1; 
 }
 
-//²åÈëÔªËØeÎªĞÂµÄÕ»¶¥ÔªËØ
+//æ’å…¥å…ƒç´ eä¸ºæ–°çš„æ ˆé¡¶å…ƒç´ 
 void Push(SqStack **S,SElemType e)
 {
     if((*S)->top==MAXSIZE-1){
@@ -65,10 +65,10 @@ void Push(SqStack **S,SElemType e)
     }
     (*S)->top++;
     (*S)->data[(*S)->top]=e;
-    cout<<"ÔªËØ"<<e<<"ÈëÕ»³É¹¦"<<endl;
+    cout<<"å…ƒç´ "<<e<<"å…¥æ ˆæˆåŠŸ"<<endl;
 }
 
-//ÈôÕ»²»¿Õ£¬ÔòÉ¾³ıSµÄÕ»¶¥ÔªËØ£¬²¢ÓÃeÖµ·µ»Ø¡£
+//è‹¥æ ˆä¸ç©ºï¼Œåˆ™åˆ é™¤Sçš„æ ˆé¡¶å…ƒç´ ï¼Œå¹¶ç”¨eå€¼è¿”å›ã€‚
 void Pop(SqStack **S,SElemType *e)
 {
     if((*S)->top==-1)
@@ -78,10 +78,10 @@ void Pop(SqStack **S,SElemType *e)
     }
     *e=(*S)->data[(*S)->top];
     (*S)->top--;
-    cout<<"ÔªËØ"<<*e<<"³öÕ»³É¹¦"<<endl;
+    cout<<"å…ƒç´ "<<*e<<"å‡ºæ ˆæˆåŠŸ"<<endl;
 }
 
-//Êä³öË³ĞòÕ»µÄÔªËØ
+//è¾“å‡ºé¡ºåºæ ˆçš„å…ƒç´ 
 void PrintSqStack(SqStack **S)
 {
     if((*S)->top==-1){

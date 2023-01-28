@@ -12,9 +12,9 @@ using namespace std;
 typedef int ElemType;
 typedef struct
 {
-    int* head; //¶¯Ì¬Êı×é
-    int size;  //¿Õ¼ä´óĞ¡
-    int length;//Êı×é³¤¶È
+    int* head; //åŠ¨æ€æ•°ç»„
+    int size;  //ç©ºé—´å¤§å°
+    int length;//æ•°ç»„é•¿åº¦
 }SqList;
 
 SqList InitSqList();
@@ -29,13 +29,13 @@ int main()
     return 0;
 }
 
-//³õÊ¼»¯²Ù×÷
+//åˆå§‹åŒ–æ“ä½œ
 SqList InitSqList() {
     SqList L;
     L.head = (int*)malloc(SIZE * sizeof(int));
 
     if (!(L.head)) {
-        cout << "³õÊ¼»¯Ê§°Ü" << endl;
+        cout << "åˆå§‹åŒ–å¤±è´¥" << endl;
         exit(0);
     }
     L.size = SIZE;
@@ -43,7 +43,7 @@ SqList InitSqList() {
     return L;
 }
 
-//²åÈë²Ù×÷
+//æ’å…¥æ“ä½œ
 int InsertSqList(SqList* L, int position, ElemType e) {
     if (L->length >= SIZE)
         return 0;
@@ -60,7 +60,7 @@ int InsertSqList(SqList* L, int position, ElemType e) {
     return 2;
 }
 
-//É¾³ı²Ù×÷
+//åˆ é™¤æ“ä½œ
 int DeleteSqList(SqList* L, int postion) {
     if (L->length < 1)
         return 0;
@@ -77,10 +77,10 @@ int DeleteSqList(SqList* L, int postion) {
     return 2;
 }
 
-//²éÕÒ²Ù×÷
+//æŸ¥æ‰¾æ“ä½œ
 int GetPostion(SqList* L, ElemType e) {
     if (L->length < 1) {
-        cout << "Ë³Ğò±íÎª¿Õ" << endl;
+        cout << "é¡ºåºè¡¨ä¸ºç©º" << endl;
         return -1;
     }
     for (int i = 0; i < L->length; i++) {
@@ -92,18 +92,18 @@ int GetPostion(SqList* L, ElemType e) {
 
 int GetDate(SqList* L, ElemType postion) {
     if (L->length < 1)
-        cout << "Ë³Ğò±íÎª¿Õ" << endl;
+        cout << "é¡ºåºè¡¨ä¸ºç©º" << endl;
     return L->head[postion - 1];
 }
 
-//ÏÔÊ¾²Ù×÷
+//æ˜¾ç¤ºæ“ä½œ
 void ShowSqList(SqList L) {
     if (L.length < 1) {
-        cout << "Ë³Ğò±íÎª¿Õ" << endl;
+        cout << "é¡ºåºè¡¨ä¸ºç©º" << endl;
     }
     else {
-        cout << "Ë³Ğò±íµÄ³¤¶È£º" << L.length << endl;
-        cout << "Ë³Ğò±íµÄÊı¾İÈçÏÂ£º" << endl;
+        cout << "é¡ºåºè¡¨çš„é•¿åº¦ï¼š" << L.length << endl;
+        cout << "é¡ºåºè¡¨çš„æ•°æ®å¦‚ä¸‹ï¼š" << endl;
         for (int i = 0; i < L.length; i++) {
             cout << L.head[i] << " ";
         }
@@ -111,19 +111,19 @@ void ShowSqList(SqList L) {
     }
 }
 
-//²âÊÔÑùÀı
+//æµ‹è¯•æ ·ä¾‹
 void test() {
     int s_ans, d_ans, G_ans1;
     SqList L = InitSqList();
     for (int i = 1; i <= 10; i++) {
         s_ans = InsertSqList(&L, i, i);
         if (s_ans == 0)
-            cout << "Ë³Ğò±íÒÑÂú" << endl;
+            cout << "é¡ºåºè¡¨å·²æ»¡" << endl;
         else if (s_ans == 1) {
-            cout << "²åÈëÎ»ÖÃÔ½½ç" << endl;
+            cout << "æ’å…¥ä½ç½®è¶Šç•Œ" << endl;
         }
         else if (s_ans == 2) {
-            cout << i << "----" << "²åÈë³É¹¦" << endl;
+            cout << i << "----" << "æ’å…¥æˆåŠŸ" << endl;
         }
     }
     ShowSqList(L);
@@ -131,29 +131,29 @@ void test() {
     int D_postion = 5;
     d_ans = DeleteSqList(&L, D_postion);
     if (d_ans == 0)
-        cout << "Ë³Ğò±íÎª¿Õ" << endl;
+        cout << "é¡ºåºè¡¨ä¸ºç©º" << endl;
     else if (d_ans == 1) {
-        cout << "É¾³ıÎ»ÖÃÔ½½ç" << endl;
+        cout << "åˆ é™¤ä½ç½®è¶Šç•Œ" << endl;
     }
     else if (d_ans == 2) {
-        cout << "µÚ" << D_postion << "Î»Êı¾İ" << "----" << "É¾³ı³É¹¦" << endl;
+        cout << "ç¬¬" << D_postion << "ä½æ•°æ®" << "----" << "åˆ é™¤æˆåŠŸ" << endl;
     }
     ShowSqList(L);
 
     int G_postion = 6;
-    cout << "²éÕÒµÚ" << G_postion << "Î»µÄÊı¾İ" << endl;
-    cout << "Êı¾İÎª£º" << GetDate(&L, G_postion) << endl;
+    cout << "æŸ¥æ‰¾ç¬¬" << G_postion << "ä½çš„æ•°æ®" << endl;
+    cout << "æ•°æ®ä¸ºï¼š" << GetDate(&L, G_postion) << endl;
 
     int G_Date = 8;
-    cout << "²éÕÒÖµÎª" << G_Date << "µÄÎ»ÖÃ" << endl;
+    cout << "æŸ¥æ‰¾å€¼ä¸º" << G_Date << "çš„ä½ç½®" << endl;
     G_ans1 = GetPostion(&L, G_Date);
     if (G_ans1 == -1) {
-        cout << "Ë³Ğò±íÎª¿Õ" << endl;
+        cout << "é¡ºåºè¡¨ä¸ºç©º" << endl;
     }
     else if (G_ans1 == -2) {
-        cout << "Êı¾İ²»´æÔÚ" << endl;
+        cout << "æ•°æ®ä¸å­˜åœ¨" << endl;
     }
     else {
-        cout << "Î»ÖÃÎª£º" << G_ans1 << endl;
+        cout << "ä½ç½®ä¸ºï¼š" << G_ans1 << endl;
     }
 }

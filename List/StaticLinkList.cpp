@@ -12,7 +12,7 @@ typedef int ElemType;
 typedef struct
 {
     ElemType data;
-    int cur;        //ÓÎ±ê
+    int cur;        //æ¸¸æ ‡
 }Component, StaticLinkList[MAXSIZE];
 
 void StaticLinkListInit(StaticLinkList space);
@@ -22,13 +22,13 @@ int LengthStaticLinkList(StaticLinkList space);
 void DelectStaticLinkList(StaticLinkList space, int postion);
 void Free_SLL(StaticLinkList space, int k);
 
-//Ö÷º¯Êı
+//ä¸»å‡½æ•°
 int main()
 {
     
 }
 
-//³õÊ¼»¯¾²Ì¬Á´±í
+//åˆå§‹åŒ–é™æ€é“¾è¡¨
 void StaticLinkListInit(StaticLinkList space)
 {
     int i;
@@ -37,7 +37,7 @@ void StaticLinkListInit(StaticLinkList space)
     space[MAXSIZE - 1].cur = 0;
 }
 
-//Ä£Äâ·ÖÅä¿Õ¼ä------¿ª¶Ñ
+//æ¨¡æ‹Ÿåˆ†é…ç©ºé—´------å¼€å †
 int Molloc_SLL(StaticLinkList space)
 {
     int i = space[0].cur;
@@ -47,7 +47,7 @@ int Molloc_SLL(StaticLinkList space)
     return i;
 }
 
-//·µ»ØÁ´±íµÄ³¤¶È
+//è¿”å›é“¾è¡¨çš„é•¿åº¦
 int LengthStaticLinkList(StaticLinkList space)
 {
     int j = 0;
@@ -59,7 +59,7 @@ int LengthStaticLinkList(StaticLinkList space)
     return j;
 }
 
-//ÔÚpostion´¦²åÈëÊı¾İe
+//åœ¨postionå¤„æ’å…¥æ•°æ®e
 void InsertStaticLinkList(StaticLinkList space, int postion, ElemType e)
 {
     int j, k, l;
@@ -75,14 +75,14 @@ void InsertStaticLinkList(StaticLinkList space, int postion, ElemType e)
             k = space[k].cur;
         space[j].cur = space[k].cur;
         space[k].cur = j;
-        cout << "²åÈë³É¹¦" << endl;
+        cout << "æ’å…¥æˆåŠŸ" << endl;
         return;
     }
     cout << "ERROR" << endl;
     return;
 }
 
-//É¾³ıpostion´¦µÄÊı¾İ
+//åˆ é™¤postionå¤„çš„æ•°æ®
 void DelectStaticLinkList(StaticLinkList space, int postion)
 {
     int j, k;
@@ -98,7 +98,7 @@ void DelectStaticLinkList(StaticLinkList space, int postion)
     Free_SLL(space, j);
 }
 
-//»ØÊÕ½áµã
+//å›æ”¶ç»“ç‚¹
 void Free_SLL(StaticLinkList space, int k)
 {
     space[k].cur = space[0].cur;

@@ -10,9 +10,9 @@ using namespace std;
 typedef int ElemType;
 typedef struct Node
 {
-    ElemType date;      //Êı¾İÓò
-    struct Node* next;  //Ö¸ÕëÓò
-    Node(int x) :        //Îö¹¹º¯Êı
+    ElemType date;      //æ•°æ®åŸŸ
+    struct Node* next;  //æŒ‡é’ˆåŸŸ
+    Node(int x) :        //ææ„å‡½æ•°
         date(x), next(NULL) {
 
     }
@@ -29,7 +29,7 @@ void PrintLinkList(LinkList L);
 int main() {
     LinkList Head;
     int H_Length;
-    cout << "ÊäÈëÁ´±íµÄ³¤¶È£º" << endl;
+    cout << "è¾“å…¥é“¾è¡¨çš„é•¿åº¦ï¼š" << endl;
     cin >> H_Length;
     //    LinkListHead(&Head,H_Length);
     LinkListTail(&Head, H_Length);
@@ -41,7 +41,7 @@ int main() {
     ClearLinkList(&Head);
 }
 
-//Î²²å·¨
+//å°¾æ’æ³•
 void LinkListTail(LinkList* Head, int n)
 {
     LinkList p;
@@ -49,7 +49,7 @@ void LinkListTail(LinkList* Head, int n)
     *Head = new Node(n);
     p = *Head;
     for (int i = 1; i <= n; i++) {
-        cout << "ÊäÈëµÚ" << i << "¸öÊı¾İµÄÖµ" << endl;
+        cout << "è¾“å…¥ç¬¬" << i << "ä¸ªæ•°æ®çš„å€¼" << endl;
         cin >> num;
         LinkList q = new Node(num);
         p->next = q;
@@ -57,13 +57,13 @@ void LinkListTail(LinkList* Head, int n)
     }
 }
 
-//Í·²å·¨
+//å¤´æ’æ³•
 void LinkListHead(LinkList* Head, int n)
 {
     int num;
     *Head = new Node(n);
     for (int i = 1; i <= n; i++) {
-        cout << "ÊäÈëµÚ" << i << "¸öÊı¾İµÄÖµ" << endl;
+        cout << "è¾“å…¥ç¬¬" << i << "ä¸ªæ•°æ®çš„å€¼" << endl;
         cin >> num;
         LinkList q = new Node(num);
         q->next = (*Head)->next;
@@ -72,7 +72,7 @@ void LinkListHead(LinkList* Head, int n)
     }
 }
 
-//ÔÚpostion´¦²åÈëe
+//åœ¨postionå¤„æ’å…¥e
 void InsertLinkList(LinkList* L, int postion, ElemType e)
 {
     LinkList p;
@@ -89,12 +89,12 @@ void InsertLinkList(LinkList* L, int postion, ElemType e)
     LinkList q = new Node(e);
     q->next = p->next;
     p->next = q;
-    cout << "²åÈë³É¹¦" << endl;
+    cout << "æ’å…¥æˆåŠŸ" << endl;
     LinkList s = *L;
     s->date = s->date + 1;
 }
 
-//É¾³ıpostion´¦µÄÊı¾İ
+//åˆ é™¤postionå¤„çš„æ•°æ®
 void DelectLinkList(LinkList* L, int postion)
 {
     LinkList p;
@@ -113,10 +113,10 @@ void DelectLinkList(LinkList* L, int postion)
     free(q);
     LinkList s = *L;
     s->date = s->date - 1;
-    cout << "É¾³ı³É¹¦" << endl;
+    cout << "åˆ é™¤æˆåŠŸ" << endl;
 }
 
-//clearÕû¸öÁ´±í
+//clearæ•´ä¸ªé“¾è¡¨
 void ClearLinkList(LinkList* L)
 {
     LinkList p, q;
@@ -127,16 +127,16 @@ void ClearLinkList(LinkList* L)
         p = q;
     }
     (*L)->next = NULL;
-    cout << "Çå¿ÕÁ´±í³É¹¦" << endl;
+    cout << "æ¸…ç©ºé“¾è¡¨æˆåŠŸ" << endl;
 }
 
-//Êä³öÁ´±íÊı¾İ
+//è¾“å‡ºé“¾è¡¨æ•°æ®
 void PrintLinkList(LinkList Head)
 {
     LinkList p = Head;
-    cout << "Á´±íµÄ³¤¶È£º" << p->date << endl;
+    cout << "é“¾è¡¨çš„é•¿åº¦ï¼š" << p->date << endl;
     p = p->next;
-    cout << "Á´±íÊı¾İÈçÏÂ£º" << endl;
+    cout << "é“¾è¡¨æ•°æ®å¦‚ä¸‹ï¼š" << endl;
     while (p != NULL) {
         cout << p->date << " ";
         p = p->next;
@@ -145,7 +145,7 @@ void PrintLinkList(LinkList Head)
 }
 
 
-/*Ë«ÏòÁ´±í
+/*åŒå‘é“¾è¡¨
 typedef struct DulNode
 {
     ElemType date;

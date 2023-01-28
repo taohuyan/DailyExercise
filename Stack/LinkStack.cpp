@@ -12,14 +12,14 @@ using namespace std;
 typedef int SElemType;
 typedef struct StackNode
 {
-    SElemType date;         //Õ»µÄÔªËØ
-    struct StackNode *next; //ÓÃÓÚÕ»ÓëÕ»µÄÁ¬½Ó
+    SElemType date;         //æ ˆçš„å…ƒç´ 
+    struct StackNode *next; //ç”¨äºæ ˆä¸æ ˆçš„è¿æ¥
 }StackNode,*LinkStackPtr;
 
 typedef struct LinkStack 
 {
-    LinkStackPtr top;   //Õ»
-    int count;          //Õ»µÄ´óĞ¡
+    LinkStackPtr top;   //æ ˆ
+    int count;          //æ ˆçš„å¤§å°
 }LinkStack;
 
 void Push(LinkStack *S,SElemType e);
@@ -30,7 +30,7 @@ int main(){
     return 0;
 }
 
-/*²åÈëÔªËØÎªeµÄÕ»¶¥ÔªËØ*/
+/*æ’å…¥å…ƒç´ ä¸ºeçš„æ ˆé¡¶å…ƒç´ */
 void Push(LinkStack *S,SElemType e)
 {
     LinkStackPtr s=(LinkStackPtr)malloc(sizeof(StackNode));
@@ -40,7 +40,7 @@ void Push(LinkStack *S,SElemType e)
     cout<<"Push--"<<e<<"--OK"<<endl;
 }
 
-//ÈôÕ»²»¿Õ£¬ÔòÉ¾³ıSµÄÕ»¶¥ÔªËØ£¬²¢ÓÃeÖµ·µ»Ø¡£
+//è‹¥æ ˆä¸ç©ºï¼Œåˆ™åˆ é™¤Sçš„æ ˆé¡¶å…ƒç´ ï¼Œå¹¶ç”¨eå€¼è¿”å›ã€‚
 void Pop(LinkStack *S,SElemType *e)
 {
     LinkStackPtr p;

@@ -11,7 +11,7 @@ using namespace std;
 typedef struct{
 	char *base;
 	char *top;
-	int stacksize;//Õ»µÄ´æ´¢ÈİÁ¿ 
+	int stacksize;//æ ˆçš„å­˜å‚¨å®¹é‡ 
 }OPRTstack;
 typedef struct{
 	double *base;
@@ -59,7 +59,7 @@ char GetTop(OPRTstack *s)
 		temp--;
 		return *(temp);
 	}
-	else return '!';//ÕâÑù¶¨ÒåµÄ»°£¬Õ»ÀïÃæ²»ÄÜ´æ´¢£¡Õâ¸öÊı¾İ 
+	else return '!';//è¿™æ ·å®šä¹‰çš„è¯ï¼Œæ ˆé‡Œé¢ä¸èƒ½å­˜å‚¨ï¼è¿™ä¸ªæ•°æ® 
 }
 void showStack(OPRTstack*s)
 {
@@ -70,7 +70,7 @@ void showStack(OPRTstack*s)
 	}
 	printf("  ");
 }
-//¿´ÆğÀ´´úÂëºÜ¶à£¬ÆäÊµÏÂÃæµÄº¯Êı¶¨ÒåºÍÉÏÃæµÄ¼¸ºõÒ»Ä£Ò»Ñù£¬Ö»ÊÇ´«µİµÄ²ÎÊı²»Í¬¶øÒÑ
+//çœ‹èµ·æ¥ä»£ç å¾ˆå¤šï¼Œå…¶å®ä¸‹é¢çš„å‡½æ•°å®šä¹‰å’Œä¸Šé¢çš„å‡ ä¹ä¸€æ¨¡ä¸€æ ·ï¼Œåªæ˜¯ä¼ é€’çš„å‚æ•°ä¸åŒè€Œå·²
 
 int createStack(NUMstack*s)
 {
@@ -113,7 +113,7 @@ double GetTop(NUMstack *s)
 		temp--;
 		return *(temp);
 	}
-	else return -1;//ÕâÑù¶¨ÒåµÄ»°£¬Õ»ÀïÃæ²»ÄÜ´æ´¢£¡Õâ¸öÊı¾İ 
+	else return -1;//è¿™æ ·å®šä¹‰çš„è¯ï¼Œæ ˆé‡Œé¢ä¸èƒ½å­˜å‚¨ï¼è¿™ä¸ªæ•°æ® 
 }
 void showStack(NUMstack*s)
 {
@@ -127,7 +127,7 @@ void showStack(NUMstack*s)
 
 
 
-int isOPRT(char c)//ÅĞ¶ÏcÊÇ²»ÊÇÔËËã·û 
+int isOPRT(char c)//åˆ¤æ–­cæ˜¯ä¸æ˜¯è¿ç®—ç¬¦ 
 {
 	if(c=='+'||c=='-'||c=='*'||c=='/'||c=='('||c==')'||c=='#')return 1;
 	else return 0;
@@ -194,29 +194,29 @@ double calculate(double left,double right, char operators)
 
 int main()
 {
-	OPRTstack oprt;//ÔËËã·ûÕ» 
-	NUMstack  num;//ÔËËãÊı×ÖÕ» 
-	NUMstack temp;//»º³åÇø£¬ÓÃÓÚ¹¹½¨ÍêÕûµÄÔËËãÊı×Ö 
-	int build=0;//ÓÉÈô¸ÉÊıÎ»¹¹³ÉµÄÊı×Ö 
-	double index;//Ä³¸öÊıÎ»ÉÏµÄÊı×Ö 
-	int complex=1;//10µÄÃİ´Î 
-	char operators;//»ù±¾±í´ïÊ½ÖĞµÄËÄÔòÔËËã·û 
-	double left,right;//»ù±¾±í´ïÊ½ÖĞ×óÓÒÔËËãÊı×Ö 
+	OPRTstack oprt;//è¿ç®—ç¬¦æ ˆ 
+	NUMstack  num;//è¿ç®—æ•°å­—æ ˆ 
+	NUMstack temp;//ç¼“å†²åŒºï¼Œç”¨äºæ„å»ºå®Œæ•´çš„è¿ç®—æ•°å­— 
+	int build=0;//ç”±è‹¥å¹²æ•°ä½æ„æˆçš„æ•°å­— 
+	double index;//æŸä¸ªæ•°ä½ä¸Šçš„æ•°å­— 
+	int complex=1;//10çš„å¹‚æ¬¡ 
+	char operators;//åŸºæœ¬è¡¨è¾¾å¼ä¸­çš„å››åˆ™è¿ç®—ç¬¦ 
+	double left,right;//åŸºæœ¬è¡¨è¾¾å¼ä¸­å·¦å³è¿ç®—æ•°å­— 
 	createStack(&num);
 	createStack(&oprt);
 	createStack(&temp);
-	printf("¼üÈëÔËËã±í´ïÊ½£¬ÒÔ#½áÊø\n"); 
+	printf("é”®å…¥è¿ç®—è¡¨è¾¾å¼ï¼Œä»¥#ç»“æŸ\n"); 
 	push(&oprt,'#');
 	char c=getchar();
-	int error=0;//syntax error ±êÊ¶·û 
+	int error=0;//syntax error æ ‡è¯†ç¬¦ 
 	while(c!='#'||GetTop(&oprt)!='#')
 	{
-		while(!isOPRT(c))//¶ÁÈëµÄÊÇÊı×Ö 
+		while(!isOPRT(c))//è¯»å…¥çš„æ˜¯æ•°å­— 
 		{
 			push(&temp,c-'0');
 			c=getchar();
 		}
-		while(!isEmpty(&temp))//½«¶ÁÈ¡µ½µÄÊı×Ö×Ö·û´æÈë»º³åÇø£¬¹¹½¨ÍêÕûµÄÔËËãÊı×Ö 
+		while(!isEmpty(&temp))//å°†è¯»å–åˆ°çš„æ•°å­—å­—ç¬¦å­˜å…¥ç¼“å†²åŒºï¼Œæ„å»ºå®Œæ•´çš„è¿ç®—æ•°å­— 
 		{
 			pop(&temp,&index);
 			build+=(index*complex);
@@ -224,31 +224,31 @@ int main()
 			
 		}
 		complex=1;
-		if(build)push(&num,double(build));//½«´ËÔËËãÊı×ÖÑ¹ÈëÕ»num 
-		printf("\nÔËËã·ûÕ»£º");
+		if(build)push(&num,double(build));//å°†æ­¤è¿ç®—æ•°å­—å‹å…¥æ ˆnum 
+		printf("\nè¿ç®—ç¬¦æ ˆï¼š");
 		showStack(&oprt);
-		printf("ÔËËãÊıÕ»£º");
-		showStack(&num);//Ã¿´ÎÑ¹Õ»µ¯Õ»¶¼ĞèÒª´òÓ¡ĞÅÏ¢ 
+		printf("è¿ç®—æ•°æ ˆï¼š");
+		showStack(&num);//æ¯æ¬¡å‹æ ˆå¼¹æ ˆéƒ½éœ€è¦æ‰“å°ä¿¡æ¯ 
 		build=0;
 		
-		if(isOPRT(c))//¶ÁÈëµÄÊÇÔËËã·û 
+		if(isOPRT(c))//è¯»å…¥çš„æ˜¯è¿ç®—ç¬¦ 
 		{
 			switch(compare(GetTop(&oprt),c)){
 				case '<':
 					push(&oprt,c);
 					c=getchar();
-					printf("\nÔËËã·ûÕ»£º");
+					printf("\nè¿ç®—ç¬¦æ ˆï¼š");
 					showStack(&oprt);
-					printf("ÔËËãÊıÕ»£º");
+					printf("è¿ç®—æ•°æ ˆï¼š");
 					showStack(&num); 
 					break;
 					
 				case '=':
 					pop(&oprt,&operators);
 					c=getchar();
-					printf("\nÔËËã·ûÕ»£º");
+					printf("\nè¿ç®—ç¬¦æ ˆï¼š");
 					showStack(&oprt);
-					printf("ÔËËãÊıÕ»£º");
+					printf("è¿ç®—æ•°æ ˆï¼š");
 					showStack(&num);
 					break;
 					
@@ -256,10 +256,10 @@ int main()
 					pop(&oprt,&operators);
 					pop(&num,&right);
 					pop(&num,&left);
-					push(&num,calculate(left,right,operators));//´ÓnumÕ»µ¯³öÁ½¸öÔËËãÊı×Ö£¬ÀûÓÃÔËËã·ûÕ»¶¥ÔªËØ½øĞĞ¼ÆËã 
-					printf("\nÔËËã·ûÕ»£º");
+					push(&num,calculate(left,right,operators));//ä»numæ ˆå¼¹å‡ºä¸¤ä¸ªè¿ç®—æ•°å­—ï¼Œåˆ©ç”¨è¿ç®—ç¬¦æ ˆé¡¶å…ƒç´ è¿›è¡Œè®¡ç®— 
+					printf("\nè¿ç®—ç¬¦æ ˆï¼š");
 					showStack(&oprt);
-					printf("ÔËËãÊıÕ»£º");
+					printf("è¿ç®—æ•°æ ˆï¼š");
 					showStack(&num);
 					break;
 					
@@ -274,6 +274,6 @@ int main()
 		}
 		if(error)break;
 	}
-	if(!error)printf("½á¹ûÎª£º%f",GetTop(&num));
+	if(!error)printf("ç»“æœä¸ºï¼š%f",GetTop(&num));
 	return 0;
 }

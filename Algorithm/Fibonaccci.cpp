@@ -13,7 +13,7 @@ int Fbi(int i);
 
 int main()
 {
-    cout<<"µİ¹éÊµÏÖì³²¨ÄÇÆõÊıÁĞ£º"<<endl;
+    cout<<"é€’å½’å®ç°æ–æ³¢é‚£å¥‘æ•°åˆ—ï¼š"<<endl;
     for(int i=0;i<40;i++){
         cout<<Fbi(i)<<" ";
     }
